@@ -3,6 +3,10 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.listen(port, () => {
+    console.log(`Servidor ativo na porta: ${port}`);
+  })
+
 app.get('/', (req, res) => {
   res.send('Serviço está ativo!');
 })
@@ -38,10 +42,6 @@ app.post("/operacao/:operacao/:num1/:num2", (req, res) => {
         res.send(`O resultado da ${operacao} é: ${result}`);
 })
 
-
-app.listen(port, () => {
-  console.log(`Servidor ativo na porta: ${port}`);
-})
 
 function ProcessarOperacao(operacao, num1, num2, result, erro) {
     switch (operacao) {
