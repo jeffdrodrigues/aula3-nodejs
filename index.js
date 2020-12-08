@@ -26,11 +26,10 @@ app.get('/operacao/:operacao/:num1/:num2', (req, res) => {
         res.send(`O resultado da ${operacao} é: ${result}`);
   })
 
-
-app.post("/operacao/:operacao/:num1/:num2", (req, res) => {
-    const num1 = parseInt(req.params.num1 || 0);
-    const num2 = parseInt(req.params.num2 || 0);
-    const operacao = req.params.operacao;
+  app.post("/operacao", (req, res) => {
+    const num1 = parseInt(req.query.num1 || 0);
+    const num2 = parseInt(req.query.num2 || 0);
+    const operacao = req.query.operacao;
     var result = 0;
     var erro = false;
 
@@ -41,7 +40,6 @@ app.post("/operacao/:operacao/:num1/:num2", (req, res) => {
     else
         res.send(`O resultado da ${operacao} é: ${result}`);
 })
-
 
 function ProcessarOperacao(operacao, num1, num2, result, erro) {
     switch (operacao) {
